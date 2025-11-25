@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Navigation Examples</title>
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        /* Additional styles for keyboard demo */
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-section h2 {
+            color: #1f2937;
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        button:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .link-group {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        a:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        a:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Native Select Dropdown */
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select:hover {
+            border-color: #d1d5db;
+        }
+
+        /* Custom JS Dropdown */
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .dropdown-button:hover {
+            border-color: #d1d5db;
+        }
+
+        .dropdown-button:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown-button[aria-expanded="true"] .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        .dropdown-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-option:hover {
+            background: #f3f4f6;
+        }
+
+        .dropdown-option:focus {
+            outline: none;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .dropdown-option.selected {
+            background: rgba(102, 126, 234, 0.2);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Keyboard Navigation</h1>
+        <p class="subtitle">Test keyboard accessibility with Tab, Enter, Space, and Arrow keys</p>
+
+        <div class="form-container">
+            <form>
+                <!-- Buttons Section -->
+                <div class="demo-section">
+                    <h2>Buttons</h2>
+                    <div class="button-group">
+                        <button type="button">Primary Action</button>
+                        <button type="button">Secondary Action</button>
+                        <button type="submit">Submit Form</button>
+                    </div>
+                </div>
+
+                <!-- Links Section -->
+                <div class="demo-section">
+                    <h2>Links</h2>
+                    <div class="link-group">
+                        <a href="#section1">Link One</a>
+                        <a href="#section2">Link Two</a>
+                        <a href="https://example.com" target="_blank" rel="noopener noreferrer">External Link</a>
+                    </div>
+                </div>
+
+                <!-- Input Fields Section -->
+                <div class="demo-section">
+                    <h2>Input Fields</h2>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Enter your name"
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your.email@example.com"
+                            maxlength="100"
+                        >
+                    </div>
+                </div>
+
+                <!-- Native Select Dropdown -->
+                <div class="demo-section">
+                    <h2>Native Select Dropdown</h2>
+                    <div class="form-group">
+                        <label for="country">Select Country</label>
+                        <select id="country" name="country">
+                            <option value="">Choose a country...</option>
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="jp">Japan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Custom JS Dropdown -->
+                <div class="demo-section">
+                    <h2>Custom JavaScript Dropdown</h2>
+                    <div class="form-group">
+                        <label for="custom-dropdown">Select Fruit</label>
+                        <div class="custom-dropdown" id="custom-dropdown">
+                            <button 
+                                type="button"
+                                class="dropdown-button" 
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                                id="dropdown-button"
+                            >
+                                <span id="dropdown-label">Choose a fruit...</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <div class="dropdown-menu" role="listbox" id="dropdown-menu">
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="apple">Apple</div>
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="banana">Banana</div>
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="orange">Orange</div>
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="grape">Grape</div>
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="mango">Mango</div>
+                                <div class="dropdown-option" role="option" tabindex="0" data-value="strawberry">Strawberry</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Custom Dropdown JavaScript
+        const dropdownButton = document.getElementById('dropdown-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const dropdownLabel = document.getElementById('dropdown-label');
+        const dropdownOptions = document.querySelectorAll('.dropdown-option');
+
+        // Toggle dropdown
+        dropdownButton.addEventListener('click', () => {
+            const isOpen = dropdownButton.getAttribute('aria-expanded') === 'true';
+            dropdownButton.setAttribute('aria-expanded', !isOpen);
+            dropdownMenu.classList.toggle('open');
+            
+            if (!isOpen) {
+                dropdownOptions[0]?.focus();
+            }
+        });
+
+        // Select option
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                selectOption(option);
+            });
+
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(option);
+                } else if (e.key === 'Escape') {
+                    closeDropdown();
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const next = option.nextElementSibling;
+                    if (next) next.focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prev = option.previousElementSibling;
+                    if (prev) prev.focus();
+                }
+            });
+        });
+
+        function selectOption(option) {
+            // Remove previous selection
+            dropdownOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Set new selection
+            option.classList.add('selected');
+            dropdownLabel.textContent = option.textContent;
+            
+            closeDropdown();
+        }
+
+        function closeDropdown() {
+            dropdownButton.setAttribute('aria-expanded', 'false');
+            dropdownMenu.classList.remove('open');
+            dropdownButton.focus();
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.custom-dropdown')) {
+                closeDropdown();
+            }
+        });
+
+        // Close dropdown on Escape
+        dropdownButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+    </script>
+</body>
+</html>

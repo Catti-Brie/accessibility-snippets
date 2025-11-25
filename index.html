@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Examples</title>
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        .links-container {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-item {
+            margin-bottom: 16px;
+        }
+
+        .link-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-item a {
+            display: block;
+            padding: 16px 20px;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            color: #1f2937;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .link-item a:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+            transform: translateX(4px);
+        }
+
+        .link-item a:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+
+        .link-description {
+            display: block;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .link-item a:hover .link-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" style="color: #06b6d4; text-decoration: none; display: inline-block; margin-bottom: 20px;">← Back to Playground</a>
+        <h1>Accessibility Examples</h1>
+        <p class="subtitle">Explore web accessibility patterns and best practices</p>
+
+        <div class="links-container">
+            <ul class="link-list">
+                <li class="link-item">
+                    <a href="native-html.html">
+                        <strong>Native HTML Forms</strong>
+                        <span class="link-description">Simple form inputs with proper labels and validation</span>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="keyboard.html">
+                        <strong>Keyboard Navigation</strong>
+                        <span class="link-description">Interactive elements with full keyboard accessibility</span>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="semantic.html">
+                        <strong>Semantic HTML</strong>
+                        <span class="link-description">Why semantic markup matters for accessibility and SEO</span>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="showmore.html">
+                        <strong>Show More Button</strong>
+                        <span class="link-description">Semantic and accessible way to expand content</span>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="images-tutorial.html">
+                        <strong>Image Alt Text Tutorial</strong>
+                        <span class="link-description">How to provide appropriate text alternatives for images</span>
+                    </a>
+                </li>
+                <li class="link-item">
+                    <a href="sizing.html">
+                        <strong>CSS Sizing</strong>
+                        <span class="link-description">Fixed vs responsive sizing approaches for accessibility</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

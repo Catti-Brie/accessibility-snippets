@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images and Alt Text Tutorial</title>
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        .tutorial-section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .tutorial-section h2 {
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+        }
+
+        .tutorial-section .description {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .example-box {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            background: #f9fafb;
+        }
+
+        .example-box h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
+        .visual-demo {
+            background: white;
+            border: 1px dashed #d1d5db;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .visual-demo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+
+        .code-block .tag {
+            color: #60a5fa;
+        }
+
+        .code-block .attr {
+            color: #fbbf24;
+        }
+
+        .code-block .value {
+            color: #34d399;
+        }
+
+        .good {
+            border-color: #10b981;
+        }
+
+        .good h3::before {
+            content: "✓ ";
+            color: #10b981;
+        }
+
+        .bad {
+            border-color: #ef4444;
+        }
+
+        .bad h3::before {
+            content: "✗ ";
+            color: #ef4444;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        @media (max-width: 768px) {
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Images and Alt Text</h1>
+        <p class="subtitle">Providing appropriate text alternatives for images</p>
+
+        <!-- 1. Informative Images -->
+        <div class="tutorial-section">
+            <h2>1. Informative Images</h2>
+            <p class="description">Images that convey concepts and information. The alt text should describe the essential information presented by the image.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">📊 Chart Image</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"chart.png"</span>
+     <span class="attr">alt</span>=<span class="value">"Bar chart showing sales increased by 25% in Q4"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">📊 Chart Image</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"chart.png"</span>
+     <span class="attr">alt</span>=<span class="value">"chart"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Decorative Images -->
+        <div class="tutorial-section">
+            <h2>2. Decorative Images</h2>
+            <p class="description">Images that only add visual decoration. Use empty alt attribute (alt="") so screen readers skip them.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">✨ Decorative Border</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"border-decoration.png"</span>
+     <span class="attr">alt</span>=<span class="value">""</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">✨ Decorative Border</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"border-decoration.png"</span>
+     <span class="attr">alt</span>=<span class="value">"decorative border image"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Functional Images -->
+        <div class="tutorial-section">
+            <h2>3. Functional Images</h2>
+            <p class="description">Images used as links or buttons. Alt text should describe the function, not the image appearance.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">🖨️ Printer Icon</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;button&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"print-icon.png"</span>
+       <span class="attr">alt</span>=<span class="value">"Print this page"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/button&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">🖨️ Printer Icon</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;button&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"print-icon.png"</span>
+       <span class="attr">alt</span>=<span class="value">"printer icon"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/button&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Images of Text -->
+        <div class="tutorial-section">
+            <h2>4. Images of Text</h2>
+            <p class="description">When text appears in an image (avoid when possible), the alt text must contain the exact same words.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">OPEN 9AM-5PM</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"store-hours.png"</span>
+     <span class="attr">alt</span>=<span class="value">"Open 9AM to 5PM"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">OPEN 9AM-5PM</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"store-hours.png"</span>
+     <span class="attr">alt</span>=<span class="value">"store hours sign"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Complex Images -->
+        <div class="tutorial-section">
+            <h2>5. Complex Images</h2>
+            <p class="description">Graphs and diagrams need complete data descriptions. Use alt for summary, provide detailed description elsewhere.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">📈 Complex Graph</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"sales-graph.png"</span>
+     <span class="attr">alt</span>=<span class="value">"Sales growth by quarter"</span>
+     <span class="attr">aria-describedby</span>=<span class="value">"graph-data"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="value">"graph-data"</span><span class="tag">&gt;</span>
+  Q1: $10k, Q2: $15k, Q3: $18k, Q4: $25k
+<span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">📈 Complex Graph</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"sales-graph.png"</span>
+     <span class="attr">alt</span>=<span class="value">"graph"</span><span class="tag">&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Groups of Images -->
+        <div class="tutorial-section">
+            <h2>6. Groups of Images</h2>
+            <p class="description">When multiple images convey one piece of information, only one needs descriptive alt text.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"5 out of 5 stars"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">""</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">""</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">""</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">""</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;div&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"star"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"star"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"star"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"star"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"star.png"</span> <span class="attr">alt</span>=<span class="value">"star"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Image Maps -->
+        <div class="tutorial-section">
+            <h2>7. Image Maps</h2>
+            <p class="description">Images with multiple clickable areas need overall context plus alt text for each area.</p>
+            
+            <div class="example-grid">
+                <div class="example-box good">
+                    <h3>Good Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">🗺️ World Map</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"world-map.png"</span>
+     <span class="attr">alt</span>=<span class="value">"World map with regional offices"</span>
+     <span class="attr">usemap</span>=<span class="value">"#map"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;map</span> <span class="attr">name</span>=<span class="value">"map"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;area</span> <span class="attr">alt</span>=<span class="value">"North America office"</span>
+        <span class="attr">href</span>=<span class="value">"/na"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;area</span> <span class="attr">alt</span>=<span class="value">"Europe office"</span>
+        <span class="attr">href</span>=<span class="value">"/eu"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/map&gt;</span>
+                    </div>
+                </div>
+
+                <div class="example-box bad">
+                    <h3>Bad Example</h3>
+                    <div class="visual-demo">
+                        <div class="placeholder-img">🗺️ World Map</div>
+                    </div>
+                    <div class="code-block">
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"world-map.png"</span>
+     <span class="attr">alt</span>=<span class="value">"map"</span>
+     <span class="attr">usemap</span>=<span class="value">"#map"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;map</span> <span class="attr">name</span>=<span class="value">"map"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;area</span> <span class="attr">href</span>=<span class="value">"/na"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;area</span> <span class="attr">href</span>=<span class="value">"/eu"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/map&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="tutorial-section">
+            <h2>Key Takeaways</h2>
+            <ul style="margin-left: 24px; color: #4b5563; line-height: 1.8;">
+                <li><strong>Informative images:</strong> Describe the essential information</li>
+                <li><strong>Decorative images:</strong> Use empty alt="" to hide from screen readers</li>
+                <li><strong>Functional images:</strong> Describe the action, not the appearance</li>
+                <li><strong>Text in images:</strong> Include exact text in alt attribute</li>
+                <li><strong>Complex images:</strong> Provide complete data descriptions</li>
+                <li><strong>Image groups:</strong> One descriptive alt, others empty</li>
+                <li><strong>Image maps:</strong> Context for image + alt for each area</li>
+            </ul>
+        </div>
+
+        <!-- Recommended Reading -->
+        <div class="tutorial-section">
+            <h2>Learn More</h2>
+            <p>
+                <a href="https://www.w3.org/WAI/tutorials/images/" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   style="color: #3498db; text-decoration: none; font-weight: 500;">
+                    Images Tutorial →
+                </a>
+                <br>
+                <small style="color: #6b7280;">W3C Web Accessibility Initiative comprehensive guide</small>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic HTML vs Non-Semantic</title>
+    <link rel="stylesheet" href="accessibility.css">
+    <style>
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .example-box {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 2px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .bad {
+            border-color: #ef4444;
+        }
+
+        .good {
+            border-color: #10b981;
+        }
+
+        .example-box h3 {
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .bad h3 {
+            color: #ef4444;
+        }
+
+        .good h3 {
+            color: #10b981;
+        }
+
+        pre {
+            background: #f9fafb;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        .benefits {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .benefits h2 {
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .benefits ul {
+            margin-left: 24px;
+            color: #4b5563;
+        }
+
+        .benefits li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .recommended {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .recommended h2 {
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .recommended ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommended li {
+            margin-bottom: 12px;
+        }
+
+        .recommended a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .recommended a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .recommended a:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                max-width: 600px;
+            }
+
+            pre {
+                font-size: 0.75rem;
+            }
+
+            .example-box {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Semantic HTML</h1>
+        <p class="subtitle">Why semantic markup matters for accessibility and SEO</p>
+
+        <!-- Example 1: Article Structure -->
+        <div class="comparison">
+            <div class="example-box bad">
+                <h3>❌ Non-Semantic (Bad)</h3>
+                <pre><code>&lt;div class="article"&gt;
+  &lt;div class="header"&gt;
+    &lt;div class="title"&gt;Article Title&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="content"&gt;
+    &lt;p&gt;Article text...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="footer"&gt;
+    &lt;span&gt;Author&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="example-box good">
+                <h3>✓ Semantic (Good)</h3>
+                <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Article Title&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;Article text...&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;
+    &lt;address&gt;Author&lt;/address&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Example 2: Navigation -->
+        <div class="comparison">
+            <div class="example-box bad">
+                <h3>❌ Non-Semantic (Bad)</h3>
+                <pre><code>&lt;div class="menu"&gt;
+  &lt;div class="link"&gt;
+    &lt;a href="/"&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="link"&gt;
+    &lt;a href="/about"&gt;About&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="example-box good">
+                <h3>✓ Semantic (Good)</h3>
+                <pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Example 3: Button vs Div -->
+        <div class="comparison">
+            <div class="example-box bad">
+                <h3>❌ Non-Semantic (Bad)</h3>
+                <pre><code>&lt;div role="button" 
+     onclick="submit()"&gt;
+  Click Me
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="example-box good">
+                <h3>✓ Semantic (Good)</h3>
+                <pre><code>&lt;button type="button"
+        onclick="submit()"&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Example 4: Redundant ARIA Role -->
+        <div class="comparison">
+            <div class="example-box bad">
+                <h3>❌ Redundant ARIA (Bad)</h3>
+                <pre><code>&lt;button role="button"&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+            </div>
+
+            <div class="example-box good">
+                <h3>✓ Clean Semantic (Good)</h3>
+                <pre><code>&lt;button&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Example 5: Link vs Button -->
+        <div class="comparison">
+            <div class="example-box bad">
+                <h3>❌ Wrong Element (Bad)</h3>
+                <pre><code>&lt;a role="button" 
+   onclick="submit()"&gt;
+  Submit
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="example-box good">
+                <h3>✓ Right Elements (Good)</h3>
+                <pre><code>&lt;!-- For actions --&gt;
+&lt;button&gt;Submit&lt;/button&gt;
+
+&lt;!-- For navigation --&gt;
+&lt;a href="/page"&gt;Go to Page&lt;/a&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits">
+            <h2>Why Use Semantic HTML?</h2>
+            <ul>
+                <li><strong>Accessibility:</strong> Screen readers can understand page structure and navigate easily</li>
+                <li><strong>SEO:</strong> Search engines better understand your content's meaning and context</li>
+                <li><strong>Maintainability:</strong> Code is easier to read and understand for developers</li>
+                <li><strong>Keyboard Navigation:</strong> Semantic elements like buttons have built-in keyboard support</li>
+                <li><strong>Standards:</strong> Following web standards ensures better browser compatibility</li>
+            </ul>
+        </div>
+
+        <!-- Recommended Reading -->
+        <div class="recommended">
+            <h2>Recommended Reading</h2>
+            <ul>
+                <li>
+                    <a href="https://www.w3.org/TR/html-aria/#avoid-specifying-redundant-roles" target="_blank" rel="noopener noreferrer">
+                        Avoid specifying redundant roles →
+                    </a>
+                    <br>
+                    <small style="color: #6b7280;">W3C specification on redundant ARIA roles</small>
+                </li>
+                <li>
+                    <a href="https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/general-principles.html" target="_blank" rel="noopener noreferrer">
+                        ARIA Landmarks - General Principles →
+                    </a>
+                    <br>
+                    <small style="color: #6b7280;">W3C guide to using landmark regions</small>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
